@@ -3,6 +3,9 @@
 #
 # Author: srinivasan.subramanian@amd.com
 #
+project(rocmmodulefile NONE)
+
+cmake_minimum_required(VERSION 3.0)
 
 #
 # Use ROCM_VERSION defined using -DROCM_VERSION
