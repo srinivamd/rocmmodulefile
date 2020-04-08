@@ -1,0 +1,23 @@
+#%Module1.0
+##
+## aomp@AOMP_VERSION@ rocm@ROCM_VERSION@
+##
+module-whatis "aomp@AOMP_VERSION@ rocm@ROCM_VERSION@"
+
+proc ModulesHelp { } {
+puts stderr "This version of AOMP@AOMP_VERSION@ integrated with ROCm contains C/C++/Flang."
+}
+
+prepend-path PATH "/opt/rocm@ROCM_VERSION@/aomp@AOMP_VERSION@/bin"
+prepend-path CMAKE_PREFIX_PATH "/opt/rocm@ROCM_VERSION@/lib//aomp@AOMP_VERSION@"
+prepend-path LIBRARY_PATH "/opt/rocm@ROCM_VERSION@/aomp@AOMP_VERSION@/lib"
+prepend-path LD_LIBRARY_PATH "/opt/rocm@ROCM_VERSION@/aomp@AOMP_VERSION@/lib"
+prepend-path LD_RUN_PATH "/opt/rocm@ROCM_VERSION@/aomp@AOMP_VERSION@/lib"
+# not sure what to put here: prepend-path PKG_CONFIG_PATH "/opt/rocm@ROCM_VERSION@/aomp@AOMP_VERSION@/lib/pkgconfig"
+prepend-path MANPATH "/opt/rocm@ROCM_VERSION@/aomp@AOMP_VERSION@/share/man"
+prepend-path CPATH "/opt/rocm@ROCM_VERSION@/aomp@AOMP_VERSION@/include"
+setenv AOMP_ROOT "/opt/rocm@ROCM_VERSION@/aomp@AOMP_VERSION@"
+setenv AOMP "/opt/rocm@ROCM_VERSION@/aomp@AOMP_VERSION@"
+
+
+
