@@ -8,13 +8,17 @@ proc ModulesHelp { } {
 puts stderr "This modulefile is for ROCm@ROCM_VERSION@ version"
 }
 
-prepend-path PATH "/opt/rocm@ROCM_VERSION@/bin:/opt/rocm@ROCM_VERSION@/hcc/bin:/opt/rocm@ROCM_VERSION@/opencl/bin/x86_64"
+# NOTE: The /opt/rocm-ver/hcc is valid only up to ROCm 3.3 version.
+# Starting with ROCm 3.5, /opt/rocm-ver/llvm/bin has clang etc.
+# To support 3.3 the hcc/bin entries are still kept
+# 
+prepend-path PATH "/opt/rocm@ROCM_VERSION@/bin:/opt/rocm@ROCM_VERSION@/llvm/bin:/opt/rocm@ROCM_VERSION@/opencl/bin:/opt/rocm@ROCM_VERSION@/hcc/bin:/opt/rocm@ROCM_VERSION@/opencl/bin/x86_64"
 #prepend-path CMAKE_PREFIX_PATH "/opt/rocm"
-prepend-path LIBRARY_PATH "/opt/rocm@ROCM_VERSION@/lib:/opt/rocm@ROCM_VERSION@/hcc/lib:/opt/rocm@ROCM_VERSION@/hip/lib:/opt/rocm@ROCM_VERSION@/hsa/lib:/opt/rocm@ROCM_VERSION@/lib64"
-prepend-path LD_LIBRARY_PATH "/opt/rocm@ROCM_VERSION@/lib:/opt/rocm@ROCM_VERSION@/hcc/lib:/opt/rocm@ROCM_VERSION@/hip/lib:/opt/rocm@ROCM_VERSION@/hsa/lib:/opt/rocm@ROCM_VERSION@/lib64"
-prepend-path LD_RUN_PATH "/opt/rocm@ROCM_VERSION@/lib:/opt/rocm@ROCM_VERSION@/hcc/lib:/opt/rocm@ROCM_VERSION@/hip/lib:/opt/rocm@ROCM_VERSION@/hsa/lib:/opt/rocm@ROCM_VERSION@/lib64"
+prepend-path LIBRARY_PATH "/opt/rocm@ROCM_VERSION@/lib:/opt/rocm@ROCM_VERSION@/hcc/lib:/opt/rocm@ROCM_VERSION@/hip/lib:/opt/rocm@ROCM_VERSION@/hsa/lib:/opt/rocm@ROCM_VERSION@/lib64:/opt/rocm@ROCM_VERSION@/opencl/lib:/opt/rocm@ROCM_VERSION@/opencl/lib/x86_64"
+prepend-path LD_LIBRARY_PATH "/opt/rocm@ROCM_VERSION@/lib:/opt/rocm@ROCM_VERSION@/hcc/lib:/opt/rocm@ROCM_VERSION@/hip/lib:/opt/rocm@ROCM_VERSION@/hsa/lib:/opt/rocm@ROCM_VERSION@/lib64:/opt/rocm@ROCM_VERSION@/opencl/lib:/opt/rocm@ROCM_VERSION@/opencl/lib/x86_64"
+prepend-path LD_RUN_PATH "/opt/rocm@ROCM_VERSION@/lib:/opt/rocm@ROCM_VERSION@/hcc/lib:/opt/rocm@ROCM_VERSION@/hip/lib:/opt/rocm@ROCM_VERSION@/hsa/lib:/opt/rocm@ROCM_VERSION@/lib64:/opt/rocm@ROCM_VERSION@/opencl/lib:/opt/rocm@ROCM_VERSION@/opencl/lib/x86_64"
 # not sure what to put here: prepend-path PKG_CONFIG_PATH "/opt/rocm/lib/pkgconfig"
-prepend-path MANPATH "/opt/rocm/share/man"
+prepend-path MANPATH "/opt/rocm@ROCM_VERSION@/share/man"
 prepend-path CPATH "/opt/rocm@ROCM_VERSION@/include:/opt/rocm@ROCM_VERSION@/hip/include:/opt/rocm@ROCM_VERSION@/hcc/include:/opt/rocm@ROCM_VERSION@/hsa/include"
 #setenv ROCM_ROOT "/opt/rocm@ROCM_VERSION@"
 #setenv ROCM ""
